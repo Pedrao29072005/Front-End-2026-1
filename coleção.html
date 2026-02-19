@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coleção de Carros Clássicos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        section {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .carro {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .carro:hover {
+            transform: scale(1.03);
+        }
+        .carro img {
+            width: 100%;
+            border-radius: 8px;
+            height: 200px;
+            object-fit: cover;
+        }
+        h2 {
+            margin-top: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Minha Coleção de Carros dos sonhos</h1>
+</header>
+
+<section>
+
+    <div class="carro">
+        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888" alt="Ferrari F40">
+        <h2>Ferrari F40</h2>
+        <p><strong>Ano:</strong> 1987</p>
+        <p><strong>Descrição:</strong> Um dos supercarros mais icônicos já produzidos, famoso por seu design agressivo e desempenho impressionante.</p>
+    </div>
+
+    <div class="carro">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" alt="Ford Mustang 1969">
+        <h2>Ford Mustang 1969</h2>
+        <p><strong>Ano:</strong> 1969</p>
+        <p><strong>Descrição:</strong> Um clássico americano com motor potente e visual marcante, símbolo da era muscle car.</p>
+    </div>
+
+    <div class="carro">
+        <img src="https://images.unsplash.com/photo-1617814076668-3b5e0e6505d9" alt="Porsche 911 Turbo">
+        <h2>Porsche 911 Turbo</h2>
+        <p><strong>Ano:</strong> 1995</p>
+        <p><strong>Descrição:</strong> Esportivo alemão conhecido por sua engenharia de precisão e excelente desempenho nas pistas.</p>
+    </div>
+
+</section>
+
+</body>
+</html>
