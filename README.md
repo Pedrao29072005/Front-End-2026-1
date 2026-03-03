@@ -1,1 +1,1 @@
-This reporitory is dedicated to make the activities of Programação Front End discipline
+This reporitory is dedicated to make and send the activities of Programação Front End discipline
