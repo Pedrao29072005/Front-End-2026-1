@@ -1,0 +1,219 @@
+/* ================================================
+   VARIÁVEIS CSS - Cores e Espaçamento
+   ================================================ */
+
+:root {
+    --primary-color: #4CAF50;
+    --primary-hover: #45a049;
+    --secondary-color: #888;
+    --secondary-hover: #777;
+    --text-color: #333;
+    --bg-light: #f9f9f9;
+    --bg-form: #f0f0f0;
+    --border-color: #ccc;
+    --border-radius: 4px;
+    --spacing: 15px;
+}
+
+/* ================================================
+   RESET E ESTILOS GLOBAIS
+   ================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ================================================
+   CABEÇALHO
+   ================================================ */
+
+#topo {
+    background-color: #ccc;
+    padding: var(--spacing);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#topo h1 {
+    margin-bottom: 10px;
+}
+
+#topo p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* ================================================
+   NAVEGAÇÃO
+   ================================================ */
+
+#menu-principal {
+    background-color: #ddd;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#menu-principal ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#menu-principal a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+#menu-principal a:hover {
+    color: var(--primary-color);
+}
+
+/* ================================================
+   SEÇÕES
+   ================================================ */
+
+section {
+    background-color: var(--bg-light);
+    padding: var(--spacing);
+    margin: 15px 0;
+}
+
+section h2 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+/* ================================================
+   FORMULÁRIO
+   ================================================ */
+
+form {
+    background-color: var(--bg-form);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: var(--border-radius);
+    max-width: 600px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.radio-group,
+.checkbox-group {
+    margin-bottom: 10px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+select {
+    cursor: pointer;
+}
+
+/* ================================================
+   BOTÕES
+   ================================================ */
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+button[type="reset"] {
+    background-color: var(--secondary-color);
+}
+
+button[type="reset"]:hover {
+    background-color: var(--secondary-hover);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* ================================================
+   RESPONSIVIDADE
+   ================================================ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #menu-principal ul {
+        flex-direction: column;
+    }
+
+    #menu-principal a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    form {
+        max-width: 100%;
+    }
+}

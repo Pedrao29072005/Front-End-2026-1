@@ -1,269 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset = "UTF-8">
-	<meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-	<title>Variáveis</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 20px;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumário de Entrega dos Trabalhos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		.header {
-			background-color: #ccc;
-			padding: 15px;
-			text-align: center;
-		}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-		nav {
-			background-color: #ddd;
-			padding: 10px;
-			text-align: center;
-		}
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
 
-		nav a {
-			margin: 0 15px;
-			text-decoration: none;
-			color: black;
-		}
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
 
-		section {
-			background-color: #f9f9f9;
-			padding: 15px;
-			margin: 15px 0;
-		}
+        p.subtitulo {
+            font-size: 0.95rem;
+            color: #777;
+            margin-bottom: 30px;
+        }
 
-		form {
-			background-color: #f0f0f0;
-			padding: 20px;
-			margin: 20px 0;
-			border-radius: 5px;
-			max-width: 600px;
-		}
+        .lista-trabalhos {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-		.form-group {
-			margin-bottom: 15px;
-		}
+        .lista-trabalhos li a {
+            display: block;
+            padding: 18px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-		label {
-			display: block;
-			margin-bottom: 5px;
-			font-weight: bold;
-			color: #333;
-		}
+        .lista-trabalhos li a:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
 
-		input[type="radio"],
-		input[type="checkbox"] {
-			margin-right: 8px;
-		}
+        .lista-trabalhos li a:active {
+            transform: scale(0.98);
+        }
 
-		.radio-group,
-		.checkbox-group {
-			margin-bottom: 10px;
-		}
+        .lista-trabalhos li a span {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: normal;
+            margin-top: 4px;
+            opacity: 0.85;
+        }
 
-		textarea {
-			width: 100%;
-			padding: 10px;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			font-family: Arial, sans-serif;
-			resize: vertical;
-			box-sizing: border-box;
-		}
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
 
-		select {
-			padding: 8px;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			font-size: 14px;
-		}
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+            }
 
-		button {
-			background-color: #4CAF50;
-			color: white;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-			margin-right: 10px;
-			font-size: 14px;
-		}
-
-		button:hover {
-			background-color: #45a049;
-		}
-
-		button[type="reset"] {
-			background-color: #888;
-		}
-
-		button[type="reset"]:hover {
-			background-color: #777;
-		}
-	</style>
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
 </head>
 <body>
-	<div class="header">
-		<header>
-			<h1>Variáveis</h1>
-		</header>
-	</div>
-	<nav>
-		<a href = "#sobre" target = "_self"> Sobre</a>
-		<a href = "#sintaxe" target = "_self">Síntaxe</a>
-		<a href = "#avaliacao" target = "_self">Avaliação</a>
-	</nav>
-<div id="main">
-<section id="sobre">
-	<h3>Sobre variáveis</h3>
-	<p>Variáveis são usadas em programação para armazenar um dados especifico, e como o próprio nome indica o valor armazenados dentrpo delas
-pode mudar/variar</p>
-	<p>Elas são espaços em memória, armazenados de 2 jeitos diferentes o 1° é em fazendo um pré-armazenamento, onde nós já alocamos previamente um valor, ou
-em tempo de execução usando alocação dinâmica, onde as variáveis são alocadas conforme e execução do programa</p>
-	<p>Antes de avançar para a síntaxe das variáveis, a um ponto a ser dito, que é: em lingugens tipadas como C, JAVA, devemos sempre declarar o tipo da variável se é
-inteira, de ponto flutuante, um texto. Já para linguegens não tipadas como Python nós podemos simplesmente declarar a variável sem especificar o tipo da mesma</p>
-</section>
-<section id="sintaxe">
-	<article>
-		<h3>Síntaxe de variáveis</h3>
-		<h4>Síntexe em lingugens tipadas</h4>
-			<p>A síntaxe em linguaguens tipadas é feita da seguinte maneira: <strong> (Tipo da variável)-(nome da variável) = (valor da variável)</strong>
-			<p>Exemplo de delcaração: INT X = 10;</p>
-		<h4>Síntaxe em lingugens não tipadas</h4>
-			<p>A síntaxe em linguagens não tipadas é mais simples, sendo ela: <strong> (Nome da vriável) = (valor da variável)</strong>
-			<p>Exemplo de declaração: X = 10;</p>
-	</article>
-</section>
-<section id="avaliacao">
-	<h3>Avaliação do Conteúdo</h3>
-	<form>
-		<div class="form-group">
-			<label for="compreensao">1. Como você avalia a sua compreensão do conteúdo apresentado?</label>
-			<div class="radio-group">
-				<input type="radio" name="compreensao" id="comp1" value="muito-bom">
-				<label for="comp1" style="display: inline; font-weight: normal;">Muito Bom</label>
-			</div>
-			<div class="radio-group">
-				<input type="radio" name="compreensao" id="comp2" value="bom">
-				<label for="comp2" style="display: inline; font-weight: normal;">Bom</label>
-			</div>
-			<div class="radio-group">
-				<input type="radio" name="compreensao" id="comp3" value="regular">
-				<label for="comp3" style="display: inline; font-weight: normal;">Regular</label>
-			</div>
-			<div class="radio-group">
-				<input type="radio" name="compreensao" id="comp4" value="precisa-melhorar">
-				<label for="comp4" style="display: inline; font-weight: normal;">Precisa Melhorar</label>
-			</div>
-		</div>
 
-		<div class="form-group">
-			<label for="clareza">2. O conteúdo foi apresentado de forma clara e bem estruturada?</label>
-			<div class="radio-group">
-				<input type="radio" name="clareza" id="clar1" value="sim">
-				<label for="clar1" style="display: inline; font-weight: normal;">Sim</label>
-			</div>
-			<div class="radio-group">
-				<input type="radio" name="clareza" id="clar2" value="parcialmente">
-				<label for="clar2" style="display: inline; font-weight: normal;">Parcialmente</label>
-			</div>
-			<div class="radio-group">
-				<input type="radio" name="clareza" id="clar3" value="nao">
-				<label for="clar3" style="display: inline; font-weight: normal;">Não</label>
-			</div>
-		</div>
+    <div class="container">
+        <h1>Programação Front End</h1>
+        <p class="subtitulo">UniCesumar &mdash; 3º Semestre &mdash; 2026/1</p>
 
-		<div class="form-group">
-			<label for="dificuldade">3. Qual foi o seu nível de dificuldade em entender o assunto?</label>
-			<div class="radio-group">
-				<input type="radio" name="dificuldade" id="dif1" value="muito-facil">
-				<label for="dif1" style="display: inline; font-weight: normal;">Muito Fácil</label>
-			</div>
-			<div class="radio-group">
-				<input type="radio" name="dificuldade" id="dif2" value="facil">
-				<label for="dif2" style="display: inline; font-weight: normal;">Fácil</label>
-			</div>
-			<div class="radio-group">
-				<input type="radio" name="dificuldade" id="dif3" value="medio">
-				<label for="dif3" style="display: inline; font-weight: normal;">Médio</label>
-			</div>
-			<div class="radio-group">
-				<input type="radio" name="dificuldade" id="dif4" value="dificil">
-				<label for="dif4" style="display: inline; font-weight: normal;">Difícil</label>
-			</div>
-			<div class="radio-group">
-				<input type="radio" name="dificuldade" id="dif5" value="muito-dificil">
-				<label for="dif5" style="display: inline; font-weight: normal;">Muito Difícil</label>
-			</div>
-		</div>
+        <ul class="lista-trabalhos">
+            <li>
+                <a href="Entregas/trabalho1.html">
+                    Trabalho 1
+                    <span>Primeiro trabalho da disciplina</span>
+                </a>
+            </li>
+            <li>
+                <a href="Entregas/trabalho2.html">
+                    Trabalho 2
+                    <span>Segundo trabalho da disciplina</span>
+                </a>
+            </li>
+            <li>
+                <a href="Entregas/trabalho3.html">
+                    Trabalho 3
+                    <span>Terceiro trabalho da disciplina</span>
+                </a>
+            </li>
+        </ul>
 
-		<div class="form-group">
-			<label for="exemplos">4. Os exemplos fornecidos foram úteis para compreender o conteúdo?</label>
-			<div class="checkbox-group">
-				<input type="checkbox" name="exemplos" id="ex1" value="sim-muito">
-				<label for="ex1" style="display: inline; font-weight: normal;">Sim, muito</label>
-			</div>
-			<div class="checkbox-group">
-				<input type="checkbox" name="exemplos" id="ex2" value="um-pouco">
-				<label for="ex2" style="display: inline; font-weight: normal;">Um pouco</label>
-			</div>
-			<div class="checkbox-group">
-				<input type="checkbox" name="exemplos" id="ex3" value="nao-foram-uteis">
-				<label for="ex3" style="display: inline; font-weight: normal;">Não foram úteis</label>
-			</div>
-		</div>
+        <footer>
+            <p>&copy; 2026 &mdash; Programação Front End</p>
+        </footer>
+    </div>
 
-		<div class="form-group">
-			<label for="conteudo">5. Qual aspecto do conteúdo você gostaria que fosse abordado com mais profundidade?</label>
-			<textarea name="conteudo" id="conteudo" rows="4" placeholder="Digite sua sugestão aqui..."></textarea>
-		</div>
-
-		<div class="form-group">
-			<label for="comentarios">6. Comentários e sugestões adicionais:</label>
-			<textarea name="comentarios" id="comentarios" rows="5" placeholder="Compartilhe suas observações..."></textarea>
-		</div>
-
-		<div class="form-group">
-			<label for="recomendacao">7. Você recomendaria este conteúdo para outros alunos?</label>
-			<select name="recomendacao" id="recomendacao">
-				<option value="">-- Selecione uma opção --</option>
-				<option value="muito-recomendo">Muito recomendo</option>
-				<option value="recomendo">Recomendo</option>
-				<option value="talvez">Talvez</option>
-				<option value="nao-recomendo">Não recomendo</option>
-			</select>
-		</div>
-
-		<div class="form-group">
-			<button type="submit">Enviar Avaliação</button>
-			<button type="reset">Limpar Formulário</button>
-		</div>
-	</form>
-</section>
-</div>
-
-<script>
-	document.querySelector('form').addEventListener('submit', function(event) {
-		event.preventDefault();
-		
-		const compreensao = document.querySelector('input[name="compreensao"]:checked');
-		const clareza = document.querySelector('input[name="clareza"]:checked');
-		const dificuldade = document.querySelector('input[name="dificuldade"]:checked');
-		const recomendacao = document.querySelector('select[name="recomendacao"]');
-		const conteudo = document.querySelector('textarea[name="conteudo"]').value;
-		const comentarios = document.querySelector('textarea[name="comentarios"]').value;
-		
-		if (!compreensao || !clareza || !dificuldade || recomendacao.value === '') {
-			alert('Por favor, preencha todos os campos obrigatórios (marcados com *)');
-			return;
-		}
-		
-		alert('Obrigado pela sua avaliação!\n\nSua resposta foi registrada com sucesso.');
-		this.reset();
-	});
-</script>
 </body>
 </html>
