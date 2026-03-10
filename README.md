@@ -23,6 +23,7 @@ Front-End-2026-1/
     ├── trabalho1.html     # Primeiro trabalho
     ├── trabalho2.html     # Segundo trabalho
     ├── trabalho3.html     # Terceiro trabalho
+    ├── trabalho4.html     # Quarto trabalho
     └── Estilos/
         └── style.css      # Arquivo de estilos compartilhado
 ```
@@ -36,6 +37,7 @@ Front-End-2026-1/
 | [Trabalho 1](Entregas/trabalho1.html) | Projeto/Conceitos iniciais | ✅ |
 | [Trabalho 2](Entregas/trabalho2.html) | Conceitos intermediários | ✅ |
 | [Trabalho 3](Entregas/trabalho3.html) | Projeto avançado | ✅ |
+| [Trabalho 4](Entregas/trabalho4.html) | DaisyUI e Tailwind CSS | ✅ |
 
 ---
 
