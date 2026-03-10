@@ -2,7 +2,7 @@
 
 ## 📚 Sobre o Repositório
 
-Repositório dedicado aos trabalhos e atividades práticas da disciplina **Programação Front End** do 3º semestre de Ciência da Computação pela **UniCesumar**.
+Repositório dedicado aos trabalhos e atividades práticas da disciplina **Programação Front End** do 3º semestre de Engenharia de Software pela **UniCesumar**.
 
 Este espaço contém projetos desenvolvidos para aprender e aprofundar conhecimentos em:
 - HTML5
