@@ -24,6 +24,7 @@ Front-End-2026-1/
     ├── trabalho2.html     # Segundo trabalho
     ├── trabalho3.html     # Terceiro trabalho
     ├── trabalho4.html     # Quarto trabalho
+    ├── trabalho5.html     # Quinto trabalho
     └── Estilos/
         └── style.css      # Arquivo de estilos compartilhado
 ```
@@ -38,6 +39,7 @@ Front-End-2026-1/
 | [Trabalho 2](Entregas/trabalho2.html) | Conceitos intermediários | ✅ |
 | [Trabalho 3](Entregas/trabalho3.html) | Projeto avançado | ✅ |
 | [Trabalho 4](Entregas/trabalho4.html) | DaisyUI e Tailwind CSS | ✅ |
+| [Trabalho 5](Entregas/trabalho5.html) | Bootstrap 5 | ✅ |
 
 ---
 
@@ -57,6 +59,7 @@ Front-End-2026-1/
 - **HTML5** - Marcação e estrutura
 - **CSS3** - Estilos e layout
 - **JavaScript** - Interatividade
+- **Bootstrap 5** - Framework CSS
 - **Git** - Controle de versão
 
 ---
