@@ -11,8 +11,8 @@ const estados = {
 
 let contador = 0; 
 let intervalo = null;
-let time_click = null;
-let time_out = null;
+let timeoutClique = null;
+let timeoutBack = null;
 
 function controlador (){
     if(intervalo) clearInterval(intervalo);
@@ -34,3 +34,22 @@ function controlador (){
 
 
 controlador();
+
+function alimentar() {
+
+    cria.src = estados.comendo;
+    contador = 0;
+
+    console.log("Comendo");
+
+    if (timeoutClique) clearTimeout(timeoutClique);
+
+    timeoutClique = setTimeout(() => {
+        cria.src = estados.alimentado;
+
+        timeoutBack = setTimeout(() => {
+            cria.src = estados.normal;
+        }, 2000);
+
+    }, 1000);
+}

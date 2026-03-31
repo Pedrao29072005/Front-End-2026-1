@@ -25,8 +25,18 @@ Front-End-2026-1/
     ├── trabalho3.html     # Terceiro trabalho
     ├── trabalho4.html     # Quarto trabalho
     ├── trabalho5.html     # Quinto trabalho
-    └── Estilos/
-        └── style.css      # Arquivo de estilos compartilhado
+    ├── bichinho.html      # Pet virtual interativo/Sexto Trabalho
+    ├── Estilos/           # Estilos compartilhados
+    │   └── style.css      # Arquivo CSS principal
+    ├── img/               # Imagens dos projetos
+    │   ├── b_n.png        # Bichinho normal
+    │   ├── b_p.png        # Bichinho puto
+    │   ├── b_d.png        # Bichinho morto
+    │   ├── b_c.png        # Bichinho comendo
+    │   ├── b_a.png        # Bichinho alimentado
+    │   └── btn.png        # Imagem do botão
+    └── js/                # Scripts JavaScript
+        └── script.js      # Script principal do bichinho
 ```
 
 ---
@@ -40,6 +50,7 @@ Front-End-2026-1/
 | [Trabalho 3](Entregas/trabalho3.html) | Projeto avançado | ✅ |
 | [Trabalho 4](Entregas/trabalho4.html) | DaisyUI e Tailwind CSS | ✅ |
 | [Trabalho 5](Entregas/trabalho5.html) | Bootstrap 5 | ✅ |
+| [Bichinho Virtual](Entregas/bichinho.html) | Pet virtual interativo com JavaScript | ✅ |
 
 ---
 
@@ -96,6 +107,8 @@ Este projeto está sob a licença [LICENSE](LICENSE). Veja o arquivo para mais d
 ---
 
 ## 📧 Contato
+
+Para dúvidas ou sugestões sobre os projetos, abra uma issue no repositório.
 
 Para dúvidas ou sugestões sobre os projetos, sinta-se livre para contribuir ou abrir uma issue.
 
