@@ -1,0 +1,35 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	gap: 20px;
+}
+.button {
+	padding: 10px 30px;
+	font-size: 1.2rem;
+	cursor: pointer;
+	border-radius: 5px;
+	border: none;
+	background-color: #f1c40f;
+	font-weight: bold;
+}
+.square {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.square img {
+	display: block;
+	width: 180px;
+	height: 180px;
+}
+.numero {
+	position: absolute;
+	font-size: 4rem;
+	font-weight: bold;
+	color: #333;
+	pointer-events: none;
+}
