@@ -1,7 +1,7 @@
 function revelar(){
     // Dados do jogador Vinícius Júnior
     const jogador = {
-        foto: "img/vinicius-junior.png", // Imagem real do jogador
+        foto: "_vinicius_junior.png", // Imagem real do jogador
         nome: "Vinícius Júnior",
         rank: "10",
         dataNas: "12 de julho de 2000",
