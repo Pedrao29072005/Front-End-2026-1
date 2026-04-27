@@ -3,19 +3,512 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Trabalhos</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Programação Front End - 3º Semestre UniCesumar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+
+        header .semester {
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: white;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            font-size: 1.2em;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: white;
+        }
+
+        .card-header h3 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-description {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+
+        .card-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .card-link:hover {
+            background: white;
+            color: #667eea;
+            border-color: #667eea;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        .author-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .author-info a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .author-info a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .section-title {
+                font-size: 1.4em;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Lista de Trabalhos</h1>
-    <ul class="lista-trabalhos">
-        <li><a href="Entregas/Trabalho1/trabalho1.html">Trabalho 1</a></li>
-        <li><a href="Entregas/Trabalho2/trabalho2.html">Trabalho 2</a></li>
-        <li><a href="Entregas/Trabalho3/trabalho3.html">Trabalho 3</a></li>
-        <li><a href="Entregas/Trabalho4/trabalho4.html">Trabalho 4</a></li>
-        <li><a href="Entregas/Trabalho5/trabalho5.html">Trabalho 5</a></li>
-        <li><a href="Entregas/Trabalho6/trabalho6.html">Trabalho 6</a></li>
-        <li><a href="Entregas/Prova/prova.html">Avaliação da disciplina</a></li>
-    </ul>
+    <div class="container">
+        <header>
+            <h1>💻 Programação Front End</h1>
+            <p>3º Semestre - UniCesumar</p>
+            <p class="semester">2026/1</p>
+        </header>
+
+        <!-- Trabalhos Principais -->
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap"></i> Trabalhos Práticos
+            </h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-file-code"></i> Trabalho 1</h3>
+                        <p>Conceitos Iniciais</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Primeiro trabalho prático sobre conceitos fundamentais de HTML, CSS e JavaScript.</p>
+                        <a href="Entregas/trabalho1.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">HTML • CSS • JS</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-file-code"></i> Trabalho 2</h3>
+                        <p>Desenvolvimento Intermediário</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Segundo trabalho explorando conceitos mais avançados de manipulação do DOM.</p>
+                        <a href="Entregas/trabalho2.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">DOM • Eventos</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-file-code"></i> Trabalho 3</h3>
+                        <p>Lógica de Programação</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Terceiro trabalho focado em lógica de programação e estruturas de controle.</p>
+                        <a href="Entregas/trabalho3.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">Lógica • Arrays</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-file-code"></i> Trabalho 4</h3>
+                        <p>Estilização Avançada</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Quarto trabalho com foco em CSS avançado, animações e design responsivo.</p>
+                        <a href="Entregas/trabalho4.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">CSS3 • Animações</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-file-code"></i> Trabalho 5</h3>
+                        <p>Projeto Integrado</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Quinto trabalho integrando todos os conceitos aprendidos ao longo do semestre.</p>
+                        <a href="Entregas/trabalho5.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">Integrado • Final</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercícios de Revisão -->
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-book"></i> Exercícios de Revisão
+            </h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-pencil-alt"></i> Revisão 1</h3>
+                        <p>Consolidação de Conceitos</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Primeiro conjunto de exercícios para consolidação dos conceitos iniciais.</p>
+                        <a href="Entregas/revisão.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">Revisão • Prática</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-pencil-alt"></i> Revisão 2</h3>
+                        <p>Aprofundamento</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Segundo conjunto aprofundando os conceitos de DOM e eventos.</p>
+                        <a href="Entregas/revisão2.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">DOM • Eventos</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-pencil-alt"></i> Revisão 3</h3>
+                        <p>Estruturas Avançadas</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Terceiro conjunto trabalhando com estruturas mais complexas e algoritmos.</p>
+                        <a href="Entregas/revisão3.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">Algoritmos • Funções</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-pencil-alt"></i> Revisão 4</h3>
+                        <p>Síntese Final</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Quarto e último conjunto com síntese de todos os tópicos estudados.</p>
+                        <a href="Entregas/revisão4.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">Síntese • Completo</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos Especiais -->
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-gamepad"></i> Projetos Especiais
+            </h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-mouse"></i> Clicker</h3>
+                        <p>Jogo Interativo</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Jogo tipo clicker com contadores, eventos e interatividade usando JavaScript.</p>
+                        <a href="Entregas/clicker.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Jogar
+                        </a>
+                        <span class="badge">Jogo • Eventos</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Lâmpada</h3>
+                        <p>Projeto Interativo</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Simulação interativa de lâmpada que acende e apaga com manipulação de imagens.</p>
+                        <a href="Entregas/lampada.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Interagir
+                        </a>
+                        <span class="badge">DOM • Imagens</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Pomodoro</h3>
+                        <p>Aplicação de Produtividade</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Aplicação Pomodoro com timer, controle de tempo e gerenciamento de tarefas.</p>
+                        <a href="Entregas/pomodoro.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Usar
+                        </a>
+                        <span class="badge">Timer • Produtividade</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-square"></i> Quadrado</h3>
+                        <p>Jogo de Lógica</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Jogo ou exercício envolvendo quadrados com lógica e interatividade desafiadora.</p>
+                        <a href="Entregas/quadrado.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Jogar
+                        </a>
+                        <span class="badge">Lógica • Desafio</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bug"></i> Bichinho</h3>
+                        <p>Projeto com Animação</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Projeto especial com animações e interações avançadas usando CSS e JavaScript.</p>
+                        <a href="Entregas/bichinho.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Ver
+                        </a>
+                        <span class="badge">Animações • CSS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avaliação -->
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i> Avaliação Semestral
+            </h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-file-alt"></i> Prova</h3>
+                        <p>Avaliação Final</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Prova semestral com múltiplas questões cobrindo todos os tópicos da disciplina.</p>
+                        <a href="Entregas/Prova/prova.html" class="card-link">
+                            <i class="fas fa-arrow-right"></i> Acessar
+                        </a>
+                        <span class="badge">Prova • Avaliação</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p><strong>Programação Front End - 3º Semestre</strong></p>
+            <p>UniCesumar - Período 2026/1</p>
+            
+            <div class="author-info">
+                <a href="https://github.com/Pedrao29072005" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7;">
+                © 2026 Pedrao29072005 - Repositório Acadêmico
+            </p>
+        </footer>
+    </div>
 </body>
 </html>
