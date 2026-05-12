@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar CPF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e5631 0%, #2d7f3d 50%, #40a856 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+
+        form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            border-top: 5px solid #40a856;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #1e5631;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #40a856;
+            background-color: #f0f9f5;
+            box-shadow: 0 0 12px rgba(64, 168, 86, 0.3);
+            transform: translateY(-2px);
+        }
+
+        input::placeholder {
+            color: #a0a0a0;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #1e5631 0%, #40a856 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(30, 86, 49, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #0f3d21 0%, #2d7f3d 100%);
+            box-shadow: 0 8px 25px rgba(30, 86, 49, 0.4);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(30, 86, 49, 0.3);
+        }
+
+        #resultado {
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        #resultado p {
+            padding: 16px 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            border-left: 5px solid;
+            animation: slideUp 0.4s ease;
+        }
+
+        #resultado p[style*="color: green"] {
+            background-color: #e8f5e9;
+            border-left-color: #40a856;
+            color: #1e5631;
+        }
+
+        #resultado p[style*="color: red"] {
+            background-color: #ffebee;
+            border-left-color: #e53935;
+            color: #b71c1c;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 500px) {
+            form {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            button {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            #resultado p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✓ Validador de CPF</h1>
+        
+        <form id="formulario">
+            <label for="cpf">Digite seu CPF:</label>
+            <input 
+                type="text" 
+                id="cpf" 
+                name="cpf" 
+                placeholder="000.000.000-00" 
+                maxlength="14"
+            >
+            <button type="button" onclick="validarCPF()">Validar CPF</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function validarCPF() {
+            let cpf = document.getElementById('cpf').value;
+            let resultado = document.getElementById('resultado');
+
+            // Remove caracteres especiais
+            cpf = cpf.replace(/\D/g, '');
+
+            // Verifica se tem 11 dígitos
+            if (cpf.length !== 11) {
+                resultado.innerHTML = '<p style="color: red;">❌ CPF deve ter 11 dígitos!</p>';
+                return false;
+            }
+
+            // Verifica se não são todos iguais
+            if (/^(\d)\1{10}$/.test(cpf)) {
+                resultado.innerHTML = '<p style="color: red;">❌ CPF inválido (dígitos repetidos)!</p>';
+                return false;
+            }
+
+            // Calcula primeiro dígito verificador
+            let soma = 0;
+            for (let i = 0; i < 9; i++) {
+                soma += cpf[i] * (10 - i);
+            }
+            let resto = soma % 11;
+            let digito1 = resto < 2 ? 0 : 11 - resto;
+
+            // Calcula segundo dígito verificador
+            soma = 0;
+            for (let i = 0; i < 10; i++) {
+                soma += cpf[i] * (11 - i);
+            }
+            resto = soma % 11;
+            let digito2 = resto < 2 ? 0 : 11 - resto;
+
+            // Verifica se os dígitos estão corretos
+            if (digito1 == cpf[9] && digito2 == cpf[10]) {
+                resultado.innerHTML = '<p style="color: green;">✅ CPF válido!</p>';
+                return true;
+            } else {
+                resultado.innerHTML = '<p style="color: red;">❌ CPF inválido!</p>';
+                return false;
+            }
+        }
+
+        // Permite validar com Enter
+        document.getElementById('cpf').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                validarCPF();
+            }
+        });
+    </script>
+</body>
+</html>

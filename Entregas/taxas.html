@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxas Infinity Bank</title>
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .container{
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      width: 400px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    h1{
+      text-align: center;
+      margin-bottom: 25px;
+      color: #38bdf8;
+    }
+
+    label{
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    input, select{
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    button{
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #38bdf8;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover{
+      background: #0ea5e9;
+    }
+
+    .resultado{
+      margin-top: 25px;
+      background: #334155;
+      padding: 15px;
+      border-radius: 10px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Taxas Infinity Bank</h1>
+        <label for="bandeira">Bandeira do Cartão:</label>
+        <select id="bandeira">
+            <option value="visa">Visa</option>
+            <option value="mastercard">Mastercard</option>
+            <option value="elo">Elo</option>
+        </select>
+        <label for="valor">Valor da Venda:</label>
+        <input type="number" id="valor" placeholder="Informe o valor da venda">
+        <label for="parcelas">Número de Parcelas:</label>
+        <input type="number" id="parcelas" placeholder="Informe o número de parcelas">
+        <button onclick="calcularVenda()">Calcular</button>
+        <div class="resultado" id="resultado">
+
+        </div>
+    </div>  
+    <script>
+       function calcularVenda(){
+
+      let bandeira = document.getElementById("bandeira").value;
+      let valor = parseFloat(document.getElementById("valor").value);
+      let parcelas = parseInt(document.getElementById("parcelas").value);
+
+      // Validação
+      if (isNaN(valor) || valor <= 0) {
+        document.getElementById("resultado").innerHTML = '<p style="color: #f87171;">❌ Por favor, insira um valor válido!</p>';
+        return;
+      }
+
+      if (isNaN(parcelas) || parcelas <= 0) {
+        document.getElementById("resultado").innerHTML = '<p style="color: #f87171;">❌ Por favor, insira um número de parcelas válido!</p>';
+        return;
+      }
+
+      let taxaBandeira = 0;
+
+      // SWITCH DAS BANDEIRAS
+      switch(bandeira){
+
+        case "visa":
+          taxaBandeira = valor * 0.02;
+          break;
+
+        case "mastercard":
+          taxaBandeira = valor * 0.0185;
+          break;
+
+        case "elo":
+          taxaBandeira = valor * 0.03;
+          break;
+
+        default:
+          taxaBandeira = 0;
+      }
+
+      // JUROS SIMPLES
+      let juros = valor * (0.0035 * parcelas);
+
+      // TAXA FIXA MENSAL
+      let taxaMensal = 12.50 * parcelas;
+
+      // VALOR TOTAL
+      let valorTotal = valor + taxaBandeira + juros + taxaMensal;
+
+      // VALOR DAS PARCELAS
+      let valorParcela = valorTotal / parcelas;
+
+      document.getElementById("resultado").innerHTML = `
+        <h3>Resumo da Venda</h3>
+
+        <p><strong>Valor da Venda:</strong> R$ ${valor.toFixed(2)}</p>
+
+        <p><strong>Taxa da Bandeira:</strong> R$ ${taxaBandeira.toFixed(2)}</p>
+
+        <p><strong>Valor dos Juros:</strong> R$ ${juros.toFixed(2)}</p>
+
+        <p><strong>Taxa Mensal:</strong> R$ ${taxaMensal.toFixed(2)}</p>
+
+        <p><strong>Valor Total:</strong> R$ ${valorTotal.toFixed(2)}</p>
+
+        <p><strong>Valor de cada Parcela:</strong> R$ ${valorParcela.toFixed(2)}</p>
+      `;
+    }
+    </script>
+</body>
+</html>

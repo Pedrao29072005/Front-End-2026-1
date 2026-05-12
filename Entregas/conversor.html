@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de temperatura</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            position: absolute;
+            top: 30px;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            font-size: 16px;
+        }
+
+        input {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            width: 180px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .seta {
+            font-size: 32px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            input {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Conversor de Temperatura (Bidirecional)</h1>
+    
+    <div class="container">
+        <div class="box">
+            <label for="celsius">Celsius (°C):</label>
+            <input 
+                type="number" 
+                id="celsius" 
+                name="celsius" 
+                placeholder="0.0"
+                step="0.1"
+            >
+        </div>
+
+        <div class="seta">⇄</div>
+
+        <div class="box">
+            <label for="fahrenheit">Fahrenheit (°F):</label>
+            <input 
+                type="number" 
+                id="fahrenheit" 
+                name="fahrenheit" 
+                placeholder="32.0"
+                step="0.1"
+            >
+        </div>
+    </div>
+
+    <script>
+        const celsiusInput = document.getElementById('celsius');
+        const fahrenheitInput = document.getElementById('fahrenheit');
+
+        // Converte de Celsius para Fahrenheit
+        function celsiusParaFahrenheit() {
+            let celsius = parseFloat(celsiusInput.value);
+            
+            if (isNaN(celsius) || celsiusInput.value === '') {
+                fahrenheitInput.value = '';
+            } else {
+                let fahrenheit = (celsius * 9/5) + 32;
+                fahrenheitInput.value = fahrenheit.toFixed(2);
+            }
+        }
+
+        // Converte de Fahrenheit para Celsius
+        function fahrenheitParaCelsius() {
+            let fahrenheit = parseFloat(fahrenheitInput.value);
+            
+            if (isNaN(fahrenheit) || fahrenheitInput.value === '') {
+                celsiusInput.value = '';
+            } else {
+                let celsius = (fahrenheit - 32) * 5/9;
+                celsiusInput.value = celsius.toFixed(2);
+            }
+        }
+
+        // Adiciona listeners de evento nos campos
+        celsiusInput.addEventListener('input', celsiusParaFahrenheit);
+        fahrenheitInput.addEventListener('input', fahrenheitParaCelsius);
+    </script>
+    
+</body>
+</html>

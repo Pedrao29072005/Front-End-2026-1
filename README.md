@@ -22,6 +22,10 @@ Front-End-2026-1/
 │   ├── lampada.html                         # Projeto interativo da lâmpada
 │   ├── pomodoro.html                        # Aplicação Pomodoro
 │   ├── quadrado.html                        # Jogo/Exercício do quadrado
+│   ├── cpf.html                             # Validador de CPF
+│   ├── media.html                           # Calculadora de média escolar
+│   ├── conversor.html                       # Conversor de temperatura
+│   ├── taxas.html                           # Calculadora de taxas bancárias
 │   ├── bip.mp3                              # Arquivo de áudio para sons
 │   │
 │   ├── Estilos/                             # Pasta com arquivos CSS
@@ -62,6 +66,15 @@ Quatro conjuntos de exercícios para consolidação dos conhecimentos adquiridos
 | **Pomodoro** | Aplicação de técnica Pomodoro com timer e controle de tempo |
 | **Quadrado** | Jogo ou exercício envolvendo quadrados e interatividade |
 | **Bichinho** | Projeto especial com animações e interações |
+
+### 🧮 Utilitários e Calculadoras
+
+| Ferramenta | Funcionalidade | Recursos |
+|-----------|---------------|---------| 
+| **CPF.html** | Validador de CPF com verificação de dígitos | ✓ Validação de 11 dígitos ✓ Detecção de CPF inválido ✓ Interface com design verde |
+| **Media.html** | Calculadora de desempenho escolar | ✓ Cálculo de média de 3 notas ✓ Classificação (Aprovado/Exame/Reprovado) ✓ Interface com design vermelho |
+| **Conversor.html** | Conversor bidirecional de temperatura | ✓ Conversão C↔F em tempo real ✓ Atualização automática ao digitar ✓ Formatação com 2 casas decimais |
+| **Taxas.html** | Calculadora de taxas bancárias Infinity Bank | ✓ Cálculo de taxas por bandeira ✓ Juros simples ✓ Taxa fixa mensal ✓ Resumo da venda |
 
 ### Avaliação (Prova/)
 Pasta contendo arquivos da prova semestral com múltiplas questões e validações JavaScript.
