@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charge Hub - Eletropostos</title>
+    <style>
+        /* CSS - Estilização */
+        :root {
+            --primary-color: #00c853; /* Verde elétrico */
+            --secondary-color: #333;
+            --light-bg: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--secondary-color);
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 { margin: 0; font-size: 1.5rem; }
+        header span { color: var(--primary-color); }
+
+        .container { padding: 2rem; }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        input, select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex-grow: 1;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover { background-color: #00a042; }
+
+        .station-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .station-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .station-card:hover { transform: translateY(-5px); }
+
+        .station-card h3 { margin-top: 0; color: var(--primary-color); }
+        .status {
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .available { background-color: #e8f5e9; color: #2e7d32; }
+        .occupied { background-color: #ffebee; color: #c62828; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Charge<span>Hub</span></h1>
+    <p>Encontre seu próximo ponto de recarga</p>
+</header>
+
+<div class="container">
+    <div class="search-bar">
+        <input type="text" id="locationInput" placeholder="Cidade ou Endereço...">
+        <select id="typeFilter">
+            <option value="all">Todos os tipos</option>
+            <option value="fast">Carga Rápida</option>
+            <option value="slow">Carga Lenta</option>
+        </select>
+        <button onclick="filterStations()">Buscar</button>
+    </div>
+
+    <div class="station-grid" id="stationGrid">
+        <!-- Os cards serão inseridos aqui pelo JS -->
+    </div>
+</div>
+
+<script>
+    // JavaScript - Dados e Funcionalidades
+    const stations = [
+        { name: "Shopping ABC - Piso G1", location: "São Paulo, SP", type: "fast", available: 3, total: 4 },
+        { name: "Posto Ipiranga 24h", location: "Rio de Janeiro, RJ", type: "fast", available: 0, total: 2 },
+        { name: "Estacionamento Central", location: "Belo Horizonte, MG", type: "slow", available: 5, total: 5 },
+        { name: "Supermercado Extra", location: "São Paulo, SP", type: "slow", available: 2, total: 4 }
+    ];
+
+    function displayStations(data) {
+        const grid = document.getElementById('stationGrid');
+        grid.innerHTML = '';
+        data.forEach(station => {
+            const card = `
+                <div class="station-card">
+                    <h3>${station.name}</h3>
+                    <p>📍 ${station.location}</p>
+                    <p>⚡ Tipo: ${station.type === 'fast' ? 'Rápida' : 'Lenta'}</p>
+                    <p>
+                        <span class="status ${station.available > 0 ? 'available' : 'occupied'}">
+                            ${station.available > 0 ? station.available + ' Disponíveis' : 'Ocupado'}
+                        </span>
+                        / ${station.total} Conectores
+                    </p>
+                </div>
+            `;
+            grid.innerHTML += card;
+        });
+    }
+
+    function filterStations() {
+        const location = document.getElementById('locationInput').value.toLowerCase();
+        const type = document.getElementById('typeFilter').value;
+        
+        const filtered = stations.filter(s => {
+            const matchLocation = s.location.toLowerCase().includes(location);
+            const matchType = type === 'all' || s.type === type;
+            return matchLocation && matchType;
+        });
+        displayStations(filtered);
+    }
+
+    // Inicializar a página com todas as estações
+    displayStations(stations);
+</script>
+
+</body>
+</html>
