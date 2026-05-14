@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06: Crédito para Festas & Eventos</title>
+    <link rel="stylesheet" href="Estilos/style8.css">
+</head>
+<body>
+    <div class="card">
+        <h2>Crédito para Festas & Eventos</h2>
+        <p>Gerencie seus créditos para eventos especiais!</p>
+        <div class="form-group">
+            <label for="package">Selecione o pacote de crédito:</label>
+            <select id="package">
+                <option value="">-- Selecione --</option>
+                <option value="50">Standard - R$ 50,00/pessoa</option>
+                <option value="80">Premium - R$ 80,00/pessoa</option>
+                <option value="120">Infinity Deluxe - R$ 120,00/pessoa</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantidade de pessoas:</label>
+            <input type="number" id="quantity" min="1" placeholder="Ex: 10">
+        </div>
+        <button id="btnCalcular">Calcular Orçamento</button>
+        <div id="resultado" class="hidden">
+            <hr>
+            <div class="res-item"><span>Custo Bruto:</span> <span id="resBruto"></span></div>
+            <div class="res-item"><span>Taxa de Serviço (10%):</span> <span id="resTaxa"></span></div>
+            <div class="res-item discount"><span>Desconto Fidelidade (5%):</span> <span id="resDesconto"></span></div>
+            <div class="res-item total"><span>Total Final:</span> <span id="resTotal"></span></div>
+        </div>
+    </div>
+    <script src="js/script9.js"></script>
+</body>
+</html>

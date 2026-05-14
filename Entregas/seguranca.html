@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 07: Validador de Segurança Infinity</title>
+    <link rel="stylesheet" href="Estilos/style9.css">
+</head>
+<body>
+    <div class="card">
+        <h2>Validador de Segurança Infinity</h2>
+        <p class="subtitle">Informe os digitos do cartão para a verificação de segurança</p>
+        <div class="input-container">
+            <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="20">
+            <button id="analyzeBtn">Analisar Cartão</button>
+        </div>
+        <div id="panel" class="hidden">
+            <div class="status-badge" id="statusBadge">Inválido</div>
+            <div class="info-grid">
+                <div class="info-item"><strong>Bandeira:</strong> <span id="brand">--</span></div>
+                <div class="info-item"><strong>Setor:</strong> <span id="sector">--</span></div>
+                <div class="info-item"><strong>Banco Emissor:</strong> <span id="issuer">Simulado via IIN</span></div>
+                <div class="info-item"><strong>IIN detectado:</strong> <span id="iinCode">--</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script10.js"></script>
+</body>
+</html>
