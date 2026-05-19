@@ -1,0 +1,16 @@
+Base do conteúdo de React
+  O React é uma biblioteca JavaScript para construir interfaces de usuário. 
+  Ele permite criar componentes reutilizáveis e gerenciar o estado da aplicação 
+  de forma eficiente.
+Componentes
+  Os componentes são as unidades básicas do React. Eles podem ser criados como 
+  funções ou classes. Os componentes de função são mais comuns e utilizam hooks 
+  para gerenciar o estado e os efeitos colaterais.
+JSX
+  JSX é uma extensão de sintaxe para JavaScript que permite escrever código 
+  que se parece com HTML dentro do JavaScript. Ele é usado para descrever 
+  a estrutura da interface do usuário de forma declarativa.
+Estado e Props
+  O estado (state) é um objeto que armazena dados que podem mudar ao longo 
+  do tempo. As props (propriedades) são usadas para passar dados de um 
+  componente pai para um componente filho.
